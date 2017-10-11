@@ -4,7 +4,19 @@ Self-Driving Car Engineer Nanodegree Program
 ---
 
 ## Reflections
-Proprtional Term
+The purpose of this project was to implement a PID controller for an autonomous vehicle in simulation. The input to the controller (processs variable) was a computed crosstrack error, an estimate of the distance between the center of the road and the center-line of the car. The controller's purpose was to continually drive this error to zero, in an effort to keep the car on the track. To that end, the controller outputs the commanded steering angle for the vehicle (control variable.) This controller is based on directly driving the input error to zero, no motion models are used. 
+ 
+The PID controller is named as such for the three error components that make up the algorithm.
+ 
+1. Proportional Term: Responds to the instantaneous difference between sensed value and desired value of the process variable. For this project, crosstrack error was used.
+2. Integral Term: Responds to the accumulated error over time.
+3. Derivative Term: Responds to the instantaneous rate of error change.
+
+Each of the parameters has an associated gain, influencing their respective effect on the control output. In a purely proportional controller, the steering angle would be set in proportion to the cross track error. A large proportional gain will be more responsive than a controller with a low proportional gain. If the gain is too high, the controller may be unstable. The integral term takes into account the accumulated error over time and eliminates residual error in the controller. The derivative term responds to the rate of change in the error and serves to improve the stability of the system. For my implementation, I manually tuned the controller. The final gains I settled on are:
+* Kp = -0.35
+* Ki = -0.001
+* Kd = -1.478
+
 
 ## Dependencies
 
